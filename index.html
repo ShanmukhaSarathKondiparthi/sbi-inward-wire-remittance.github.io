@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESOP/Portfolio Investment Declaration Form</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- Include jsPDF library from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ESOP/Portfolio Investment Inward Wire Remittances</h1>
+            <p class="subtitle">Customer Declaration Form (For repatriation within 180 days)</p>
+        </header>
+
+        <form id="declarationForm">
+            <!-- Section 1: Basic Information -->
+            <section class="form-section">
+                <h2>Basic Information</h2>
+                
+                <div class="form-group">
+                    <label for="todayDate">Today's Date:</label>
+                    <input type="date" id="todayDate" name="todayDate">
+                </div>
+
+                <div class="form-group">
+                    <label for="accountNumber">Bank Account Number:</label>
+                    <input type="text" id="accountNumber" name="accountNumber">
+                </div>
+
+                <div class="form-group">
+                    <label for="branchName">Branch Name:</label>
+                    <input type="text" id="branchName" name="branchName">
+                </div>
+
+                <div class="form-group">
+                    <label for="yourName">Your Full Name:</label>
+                    <input type="text" id="yourName" name="yourName">
+                </div>
+            </section>
+
+            <!-- Section 2: Purpose of Remittance -->
+            <section class="form-section">
+                <h2>Purpose of Remittance (Select all that apply)</h2>
+                
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="purpose" value="P0001">
+                        <span>P0001 - Repatriation of Indian Portfolio investment abroad in equity capital (shares)</span>
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="purpose" value="P0002">
+                        <span>P0002 - Repatriation of Indian Portfolio investment abroad in debt instruments</span>
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="purpose" value="P0021">
+                        <span>P0021 - Receipts on account of sale of share under Employee stock option</span>
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="purpose" value="P1411">
+                        <span>P1411 - Inward remittance of interest income on account of Portfolio Investment made abroad</span>
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="purpose" value="P1412">
+                        <span>P1412 - Inward remittance of dividends on account of Portfolio Investment made abroad on equity and investment fund shares</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Section 3: Remittance Details -->
+            <section class="form-section">
+                <h2>Remittance Details</h2>
+                
+                <div class="form-group">
+                    <label for="foreignCompany">Name of Foreign Company (For ESOP only):</label>
+                    <input type="text" id="foreignCompany" name="foreignCompany">
+                </div>
+
+                <div class="form-group">
+                    <label for="fundTransfer">Fund Transfer from Overseas Broking Account (For Portfolio Investments only):</label>
+                    <input type="text" id="fundTransfer" name="fundTransfer">
+                </div>
+
+                <div class="form-group">
+                    <label for="currency">Currency of Remittance:</label>
+                    <input type="text" id="currency" name="currency" placeholder="e.g., USD, EUR">
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input type="text" id="amount" name="amount">
+                </div>
+
+                <div class="form-group">
+                    <label for="receivedFrom">Received From:</label>
+                    <input type="text" id="receivedFrom" name="receivedFrom">
+                </div>
+
+                <div class="form-group">
+                    <label for="saleDate">Date of Sale (ESOPs/ESUs/RSUs/Portfolio investments):</label>
+                    <input type="date" id="saleDate" name="saleDate">
+                </div>
+            </section>
+
+            <!-- Section 4: Investment Details -->
+            <section class="form-section">
+                <h2>Details of Underlying Investments (Select all that apply)</h2>
+                
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="investment" value="cashless">
+                        <span>Issued to me by the above company under the 'Cashless Employees Stock Option Scheme'</span>
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="investment" value="rsu">
+                        <span>Allotted to me as an RSU (Restricted Stock Unit)</span>
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="investment" value="dspp">
+                        <span>Allotted to me under DSPP (Direct Stock Purchase Plan)</span>
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="investment" value="gift">
+                        <span>Acquired by way of gift from any person resident outside India</span>
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="investment" value="inheritance">
+                        <span>Acquired by way of inheritance from a person whether a resident in or outside India</span>
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="investment" value="nri">
+                        <span>Acquired when I was an NRI</span>
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="investment" value="lrs">
+                        <span>Purchased by me through an outward remittance under the extant Liberalised Remittance Scheme (LRS) limit</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Section 5: Outward Remittance Details (for LRS) -->
+            <section class="form-section">
+                <h2>Outward Remittance Details (If applicable for LRS)</h2>
+                
+                <div class="form-group">
+                    <label for="amountRemitted">Amount Remitted (in FCY):</label>
+                    <input type="text" id="amountRemitted" name="amountRemitted">
+                </div>
+
+                <div class="form-group">
+                    <label for="remittanceDate">Date of Remittance:</label>
+                    <input type="date" id="remittanceDate" name="remittanceDate">
+                </div>
+
+                <div class="form-group">
+                    <label for="bankName">Name of the Bank:</label>
+                    <input type="text" id="bankName" name="bankName">
+                </div>
+
+                <div class="form-group">
+                    <label for="bankBranch">Bank Branch Name:</label>
+                    <input type="text" id="bankBranch" name="bankBranch">
+                </div>
+            </section>
+
+            <!-- Section 6: Compliance -->
+            <section class="form-section">
+                <h2>Compliance Information</h2>
+                
+                <div class="form-group">
+                    <label for="indianCompany">Indian Company Name (to comply with regulatory reporting for ESOP buy-back):</label>
+                    <input type="text" id="indianCompany" name="indianCompany">
+                </div>
+            </section>
+
+            <!-- Submit Button -->
+            <div class="button-container">
+                <button type="submit" class="download-btn">Download PDF</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
